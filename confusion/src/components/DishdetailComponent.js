@@ -4,13 +4,11 @@ import moment from 'moment';
 
 
 class DishDetail extends Component {
-    constructor(props) {
-        super(props);
-
-    }
+    
     renderDish(dish){ 
         if(dish != null){
             return(
+               
                 <div className="col-12 col-md-5 m-1">
                 <Card>
                     <CardImg width="100%" src={dish.image} alt={dish.name} />
@@ -20,6 +18,7 @@ class DishDetail extends Component {
                     </CardBody>
                 </Card>
                 </div>
+                
             );
 
         }
@@ -58,14 +57,17 @@ class DishDetail extends Component {
 
     }
     render() {
-    const selectedDish = this.props.selectedDishes;
+      
+    const selectedDish = this.props.dish;
     if(selectedDish != null){
         const dishItem = this.renderDish(selectedDish);
         const comments = this.renderComments(selectedDish.comments);
             return (
+              <div className = "container">
                 <div className="row">
                     {dishItem}
                     {comments}
+                </div>
                 </div>
             );
         }
