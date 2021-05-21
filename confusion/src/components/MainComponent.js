@@ -8,6 +8,7 @@ import { Component } from 'react';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Contact from './ContactComponent';
+import About from './AboutComponent';
 import Home from './HomeComponent';
 import DishDetail from './DishdetailComponent';
 import { Switch, Route, Redirect } from 'react-router-dom';
@@ -32,6 +33,12 @@ class  Main extends Component {
         leader={this.state.leaders.filter((leader)=>leader.featured)[0]}/>
       )
     }
+    const AboutUs = () =>{
+      return(
+        <About leaders={this.state.leaders}/>
+      )
+        
+    }
     const DishWithId = ({match}) =>{
       console.log('matc',match.params.dishId)
       return(
@@ -47,6 +54,7 @@ class  Main extends Component {
       <Route exact path = "/menu" component={() => <Menu dishes = {this.state.dishes}/>}/>
       <Route path="/menu/:dishId" component = {DishWithId}/>
       <Route exact path ="/contactus" component ={Contact}/>
+      <Route exact path ="/aboutus" component={() => <AboutUs leader = {this.state.leaders}/>}/>
       <Redirect to="/home" />
     </Switch>
     <Footer />
